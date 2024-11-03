@@ -8,4 +8,4 @@ Based on https://github.com/barteksc/PdfiumAndroid and https://github.com/johngr
 
 It offers PDFView which can display documents. This view supports password encrypted pdfs. In case of an invalid password PdfPasswordException is thrown.
 
-To use it, build aar and include it in our app.
+To use it, build aar and include it in the app.
