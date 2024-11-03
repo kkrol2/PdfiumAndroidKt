@@ -18,6 +18,7 @@ kotlin {
 android {
     namespace = "io.legere.pdfiumandroid"
     compileSdk = 34
+    ndkVersion = "27.2.12479018"
 
     defaultConfig {
         minSdk = 23
@@ -26,23 +27,12 @@ android {
         @Suppress("UnstableApiUsage")
         externalNativeBuild {
             cmake {
+                arguments += listOf("-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON")
                 cppFlags("")
             }
         }
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
-        maybeCreate("qa")
-        getByName("qa") {
-            matchingFallbacks += listOf("release")
-            isMinifyEnabled = true
-            signingConfig = signingConfigs.getByName("debug")
-        }
-    }
     externalNativeBuild {
         cmake {
             path = file("src/main/cpp/CMakeLists.txt")
@@ -66,6 +56,7 @@ dependencies {
 
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.annotation.jvm)
+    implementation(libs.androidx.core)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

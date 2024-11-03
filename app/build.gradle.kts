@@ -22,6 +22,7 @@ android {
 
     defaultConfig {
         applicationId = "io.legere.pdfiumandroidkt"
+        targetSdk = 34
         minSdk = 23
         versionCode = 1
         versionName = "1.0"
@@ -30,22 +31,6 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
-            )
-        }
-        maybeCreate("qa")
-        getByName("qa") {
-            matchingFallbacks += listOf("release")
-            isMinifyEnabled = true
-            signingConfig = signingConfigs.getByName("debug")
-            matchingFallbacks += listOf("release")
-        }
-    }
     compileOptions {
         sourceCompatibility(JavaVersion.VERSION_17)
         targetCompatibility(JavaVersion.VERSION_17)
