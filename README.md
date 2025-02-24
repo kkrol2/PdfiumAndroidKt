@@ -1,6 +1,6 @@
 # PdfiumAndroidKt
 
-Current version: 1.0.20
+Current version: 1.0.21
 
 A Pdfium Android library using the latest stable version Pdfium.  Written in Kotlin with coroutines to easily talk to the native code off the main thread.
 

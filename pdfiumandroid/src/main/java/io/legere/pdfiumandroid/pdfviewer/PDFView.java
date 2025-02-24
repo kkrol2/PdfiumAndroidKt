@@ -38,6 +38,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.legere.pdfiumandroid.DefaultLogger;
 import io.legere.pdfiumandroid.PdfDocument;
 import io.legere.pdfiumandroid.PdfiumCore;
 import io.legere.pdfiumandroid.pdfviewer.exception.PageRenderingException;
@@ -61,6 +62,7 @@ import io.legere.pdfiumandroid.pdfviewer.util.ArrayUtils;
 import io.legere.pdfiumandroid.pdfviewer.util.Constants;
 import io.legere.pdfiumandroid.pdfviewer.util.MathUtils;
 import io.legere.pdfiumandroid.pdfviewer.util.Util;
+import io.legere.pdfiumandroid.util.AlreadyClosedBehavior;
 import io.legere.pdfiumandroid.util.Config;
 
 /**
@@ -340,7 +342,7 @@ public class PDFView extends RelativeLayout {
         debugPaint = new Paint();
         debugPaint.setStyle(Style.STROKE);
 
-        pdfiumCore = new PdfiumCore(context, new Config());
+        pdfiumCore = new PdfiumCore(context, new Config(new DefaultLogger(), AlreadyClosedBehavior.IGNORE));
         setWillNotDraw(false);
     }
 
